@@ -1,31 +1,35 @@
 pipeline {
     agent any 
-    stages{
+    parameters {
+        choice(name: 'STAGE_NAME', choices: ['BUILD', 'DEPLOY','TEST'], description: 'Enter stage name to execute ?')
+    }
+    stages {
         stage('BUILD') {
+            when { 
+                expression{ params.STAGE_NAME == "BUILD" }
+            }    
             steps{
-                 sh '''
-                    sleep 5
-                    echo "This is a BUILD stage"
-                '''
+                print "DEBUG: parameter STAGE_NAME = ${params.STAGE_NAME}"
             }
         }
 
-        stage('TEST') {
+        stage('DEPLOY'){
+            when { 
+                expression{ params.STAGE_NAME == "DEPLOY" }
+            }    
             steps{
-                sh '''
-                    sleep 6
-                    echo "This is a TEST stage"
-                '''
-            }
+                print "DEBUG: parameter STAGE_NAME = ${params.STAGE_NAME}"
+            }    
         }
 
-        stage('DEPLOY') {
+        stage('TEST'){
+            when { 
+                expression{ params.STAGE_NAME == "TEST" }
+            }    
             steps{
-                sh '''
-                    sleep 5
-                    echo "This is a DEPLOY stage"
-                   '''
-            }
+                print "DEBUG: parameter STAGE_NAME = ${params.STAGE_NAME}"
+            }    
         }
+        
     }
 }
