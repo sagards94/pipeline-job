@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('BUILD'){
             when { 
-                expression{ params.STAGE_NAME == "BUIL" }
+                expression{ params.STAGE_NAME == "BUILD" }
             }    
             steps{
                 print "DEBUG: parameter BUILD = ${params.STAGE_NAME}"
