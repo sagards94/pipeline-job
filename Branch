@@ -1,0 +1,26 @@
+piepline {
+    agent any 
+    stages {
+        stage('parallel') {
+            parallel {
+                stage('BUILD') {
+                    when {
+                        branch 'main'
+                    }
+                    steps{
+                        sh "echo STEGE-2 executes if branch is main"
+                    }
+                }
+
+                stage('DEPLOY'){
+                    when {
+                        branch 'main'
+                    }
+                    steps{
+                        sh "echo STEGE-2 executes if branch is main"
+                    }
+                }
+            }    
+        }    
+    }
+}
