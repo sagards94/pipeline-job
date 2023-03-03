@@ -4,12 +4,12 @@ pipeline {
         choice(name: 'STAGE_NAME', choices: ['BUILD', 'DEPLOY','TEST'], description: 'Enter stage name to execute ?')
     }
     stages {
-        stage('BUILD') {
+        stage('BUILD'){
             when { 
                 expression{ params.STAGE_NAME == "BUILD" }
             }    
             steps{
-                print "DEBUG: parameter STAGE_NAME = ${params.STAGE_NAME}"
+                print "DEBUG: parameter BUILD = ${params.STAGE_NAME}"
             }
         }
 
@@ -18,7 +18,7 @@ pipeline {
                 expression{ params.STAGE_NAME == "DEPLOY" }
             }    
             steps{
-                print "DEBUG: parameter STAGE_NAME = ${params.STAGE_NAME}"
+                print "DEBUG: parameter DEPLOY = ${params.STAGE_NAME}"
             }    
         }
 
@@ -27,7 +27,7 @@ pipeline {
                 expression{ params.STAGE_NAME == "TEST" }
             }    
             steps{
-                print "DEBUG: parameter STAGE_NAME = ${params.STAGE_NAME}"
+                print "DEBUG: parameter TEST = ${params.STAGE_NAME}"
             }    
         }
         
