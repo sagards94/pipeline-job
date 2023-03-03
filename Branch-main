@@ -5,19 +5,19 @@ piepline {
             parallel {
                 stage('BUILD') {
                     when {
-                        branch 'master'
+                        branch 'main'
                     }
                     steps{
-                        sh "echo STEGE-2 executes if branch is master"
+                        sh "echo STEGE-2 executes if branch is main"
                     }
                 }
 
                 stage('DEPLOY'){
                     when {
-                        branch 'master'
+                        branch 'main'
                     }
                     steps{
-                        sh "echo STEGE-2 executes if branch is master"
+                        sh "echo STEGE-2 executes if branch is main"
                     }
                 }
             }    
